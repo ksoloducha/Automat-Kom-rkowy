@@ -11,6 +11,8 @@ bool** create_tab_from_file (char* fileName){
 	if(in == NULL)
 		return NULL;
 
+	fscanf(in, "%d %d", &XMAX, &YMAX);
+
 	bool **myTab = (bool**) malloc (XMAX * sizeof (bool*));
 	for(int i = 0; i < XMAX; i++)
 		myTab[i] = (bool*) malloc (YMAX * sizeof (bool));
@@ -28,9 +30,11 @@ bool** create_tab_from_file (char* fileName){
 	return myTab;
 }
 
-void print_tab_to_file (bool **tab){
+void print_tab_to_file (bool **tab, char *filename){
 
-	FILE *out = fopen("output_data.txt", "w");
+	FILE *out = fopen (filename, "w");	
+
+	fprintf(out, "%d\t%d\n", XMAX, YMAX);
 
 	for(int i = 0; i < XMAX; i++)
 		for(int j = 0; j < YMAX; j++)
