@@ -1,6 +1,13 @@
 #ifndef _FILE_H_
 #define _FILE_H_
 
+/* program obsługuje pliki w formacie:
+ * "wymiar_x_okna_graficznego	wymiar_y_okna_graficznego
+ * x_1	y_1
+ * x_2	y_2
+ * ...
+ * x_n	y_n" */
+
 /* funkcja tworzy tablicę ze zmiennymi typu bool i zwraca wskaźnik na nią,
  * żywym komórkom, których współrzędne odczytuje z pliku fileName nadaje wartość true,
  * natomiast martwym, false */
