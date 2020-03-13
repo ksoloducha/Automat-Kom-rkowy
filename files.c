@@ -31,15 +31,9 @@ bool** create_tab_from_file (char* fileName){
 }
 
 void print_tab_to_file (bool **tab, char *filename){
-<<<<<<< HEAD
-
-	FILE *out = fopen (filename, "w");	
-
-=======
 
 	FILE *out = fopen(filename, "w");
 	
->>>>>>> d02f1e7b6905a41c76f238232aaddc8d50d7ef1a
 	fprintf(out, "%d\t%d\n", XMAX, YMAX);
 
 	for(int i = 0; i < XMAX; i++)
