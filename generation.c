@@ -135,7 +135,7 @@ void move (bool **tab){
       if (neighbors >= 3 && temp[i][j] == false)
         tab[i][j] = true;
       // żywa komórka nie ma 2 lub 3 sąsiadów - staje sie martwa
-      if (neighbors < 2 && neighbors > 3 && temp[i][j] == true)
+      if ((neighbors < 2 || neighbors > 3) && temp[i][j] == true)
         tab[i][j] = false;
     }
   }
