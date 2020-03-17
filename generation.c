@@ -10,10 +10,10 @@ extern int XMAX, YMAX;
 void move (bool **array){
 	
   // tymczasowa tablica ze stanami początkowymi
-  bool temp[XMAX][YMAX];
+  bool tmp[XMAX][YMAX];
   for (int i = 0; i < XMAX; i++ )
     for (int j = 0; j < YMAX; j++ )
-      temp[i][j] = array[i][j];
+      tmp[i][j] = array[i][j];
 
   int neighbors;	//licznik żywych są siadów badanej komórki
 	
