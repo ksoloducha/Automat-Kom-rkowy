@@ -29,7 +29,7 @@ void move (bool **array){
 					else if(tmp[x][y])
 						neighbors++;
 				}
-			if(!tmp[i][j] && neighbors >= 3)
+			if(!tmp[i][j] && neighbors == 3)
 				array[i][j] = true;
 			else if(tmp[i][j] && neighbors != 3 && neighbors != 4)
 				array[i][j] = false;
