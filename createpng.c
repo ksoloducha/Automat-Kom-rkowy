@@ -11,6 +11,7 @@
 
 int x, y;
 
+//zadeklarowane w funkcji main
 extern int XMAX, YMAX;
 png_byte color_type;
 png_byte bit_depth;
@@ -20,8 +21,33 @@ png_infop info_ptr;
 int number_of_passes;
 png_bytep * row_pointers;
 
+void process_arr(bool **array){
+
+	bit_depth = 8;
+	color_type = PNG_COLOR_TYPE_GRAY;
+
+	number_of_passes = 7;
+	//alokacja pamięci (zwolnienie w write_png_file)
+	row_pointers = (png_bytep*) malloc (sizeof(png_bytep) * YMAX);
+	for(y = 0; y < YMAX; y++)
+		row_pointers[y] = (png_byte*) malloc(sizeof(png_byte) * XMAX);
+
+	/* "przerabianie" tablicy przekazanej w argumencie
+	 * żywe komórki są kolorowane na biało, martwe na czarno */
+	for(y = 0; y < YMAX; y++){
+		png_byte* row = row_pointers[y];
+		for(x = 0; x < XMAX; x++)
+			if(array[x][y])
+				row[x] = 255;
+			else
+				row[x] = 0;
+	}
+}
+
 //zapisywanie do pliku png analogicznie jak w przykładzie na ISODzie
-void write_png_file(char* file_name) {
+void write_png_file(bool **array, char* file_name) {
+	
+	process_arr(array);
 
 	FILE *fp = fopen(file_name, "wb");
 	if (!fp)
@@ -64,27 +90,4 @@ void write_png_file(char* file_name) {
 	free(row_pointers);
 
 	fclose(fp);
-}
-
-void process_arr(bool **array){
-
-	bit_depth = 8;
-	color_type = PNG_COLOR_TYPE_GRAY;
-
-	number_of_passes = 7;
-	//alokacja pamięci (zwolnienie w write_png_file)
-	row_pointers = (png_bytep*) malloc (sizeof(png_bytep) * YMAX);
-	for(y = 0; y < YMAX; y++)
-		row_pointers[y] = (png_byte*) malloc(sizeof(png_byte) * XMAX);
-
-	/* "przerabianie" tablicy przekazanej w argumencie
-	 * żywe komórki są kolorowane na biało, martwe na czarno */
-	for(y = 0; y < YMAX; y++){
-		png_byte* row = row_pointers[y];
-		for(x = 0; x < XMAX; x++)
-			if(array[x][y])
-				row[x] = 255;
-			else
-				row[x] = 0;
-	}
 }
