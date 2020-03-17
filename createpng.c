@@ -7,6 +7,8 @@
 
 #include <png.h>
 
+#include "createpng.h"
+
 int x, y;
 
 extern int XMAX, YMAX;
