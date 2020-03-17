@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#include "files.h"
+
 extern int XMAX, YMAX;
 
 bool** create_tab_from_file (char* fileName){
