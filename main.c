@@ -18,7 +18,7 @@ int main(int argc, char **argv){
 	int n = 300;
 	bool help = false;
 
-	char *usage = 	"Użycie: ./a.out [-f input_file] [-n number_of_generations] [-h] \n\n"
+	char *usage = 	"Użycie: ./autkom [-f input_file] [-n number_of_generations] [-h] \n\n"
 			"	Jeżeli podany jest plik input_file, program czyta z niego początkowe punkty.\n"
 			"		W przeciwnym wypadku punkty są czytane z domyślnego pliku breeder_coordinates.txt.\n"
 			"	Jeżeli podana jest liczba number_of_generations przeprowadzane jest number_of_generations generacji.\n"
